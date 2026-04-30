@@ -1,0 +1,34 @@
+{
+  "sentiment": {
+    "enabled": true,
+    "model_name": "tabularisai/multilingual-sentiment-analysis",
+    "batch_size": 16,
+    "max_length": 128,
+    "framework": "pt",
+    "label_map": {
+      "LABEL_0": "Negative",
+      "LABEL_1": "Neutral",
+      "LABEL_2": "Positive",
+      "0": "Negative",
+      "1": "Neutral",
+      "2": "Positive"
+    }
+  },
+  "graph": {
+    "enabled": true,
+    "session_gap_minutes": 45,
+    "reply_window_minutes": 15,
+    "context_window": 5,
+    "mention_weight": 2.8,
+    "reply_base_weight": 1.2,
+    "reply_decay_weight": 2.2,
+    "reply_decay_divisor": 4.0,
+    "cluster_weight": 0.7,
+    "cluster_decay_divisor": 12.0
+  },
+  "export": {
+    "include_csv": true,
+    "include_parquet": true,
+    "output_dir": "outputs/latest_run"
+  }
+}

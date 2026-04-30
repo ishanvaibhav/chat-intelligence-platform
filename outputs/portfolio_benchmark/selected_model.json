@@ -1,0 +1,6 @@
+{
+  "selected_model": "tabularisai/multilingual-sentiment-analysis",
+  "accuracy": 0.6889,
+  "macro_f1": 0.6762,
+  "dataset_rows": 45
+}

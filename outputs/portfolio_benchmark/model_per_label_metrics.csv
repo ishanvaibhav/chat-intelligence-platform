@@ -1,0 +1,10 @@
+model_name,label,precision,recall,f1,support
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Negative,0.3158,0.4,0.3529,15
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Neutral,0.2857,0.1333,0.1818,15
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Positive,0.5263,0.6667,0.5882,15
+lxyuan/distilbert-base-multilingual-cased-sentiments-student,Negative,0.7333,0.7333,0.7333,15
+lxyuan/distilbert-base-multilingual-cased-sentiments-student,Neutral,0.5,0.2,0.2857,15
+lxyuan/distilbert-base-multilingual-cased-sentiments-student,Positive,0.5417,0.8667,0.6667,15
+tabularisai/multilingual-sentiment-analysis,Negative,0.7368,0.9333,0.8235,15
+tabularisai/multilingual-sentiment-analysis,Neutral,0.6364,0.4667,0.5385,15
+tabularisai/multilingual-sentiment-analysis,Positive,0.6667,0.6667,0.6667,15

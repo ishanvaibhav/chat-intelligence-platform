@@ -1,0 +1,4 @@
+model_name,metric,value
+tabularisai/multilingual-sentiment-analysis,accuracy,0.6889
+lxyuan/distilbert-base-multilingual-cased-sentiments-student,accuracy,0.6
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,accuracy,0.4

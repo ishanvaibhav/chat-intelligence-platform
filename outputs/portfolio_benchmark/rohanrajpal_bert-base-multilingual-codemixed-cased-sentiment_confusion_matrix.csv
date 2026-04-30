@@ -1,0 +1,4 @@
+model_name,actual,Negative,Neutral,Positive
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Negative,6,5,4
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Neutral,8,2,5
+rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Positive,5,0,10

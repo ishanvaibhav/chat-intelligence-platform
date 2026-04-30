@@ -1,0 +1,4 @@
+sentiment,messages,avg_confidence,share_percent
+Negative,6,0.619,20.0
+Neutral,13,0.726,43.33
+Positive,11,0.711,36.67

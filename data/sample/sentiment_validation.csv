@@ -1,0 +1,46 @@
+text,label,language
+"bahut badiya kaam hua aaj",Positive,Hinglish
+"loved the final output yaar",Positive,Hinglish
+"service team was extremely helpful",Positive,English
+"demo ka response kaafi accha tha",Positive,Hinglish
+"release went super smooth today",Positive,English
+"mujhe ye result bahut pasand aaya",Positive,Hinglish
+"great job team, this feels polished",Positive,English
+"client was really happy with the delivery",Positive,English
+"bhai ye feature mast chal raha hai",Positive,Hinglish
+"presentation looked clean and impressive",Positive,English
+"support ne issue turant solve kar diya",Positive,Hinglish
+"overall experience was delightful",Positive,English
+"kaafi solid improvement dekhne ko mila",Positive,Hinglish
+"users loved the new design update",Positive,English
+"build fast tha aur output stable tha",Positive,Hinglish
+"service bahut kharab thi",Negative,Hinglish
+"itna delay unacceptable hai",Negative,Hinglish
+"the app crashed during the demo",Negative,English
+"bakwaas experience tha, kuch bhi kaam nahi hua",Negative,Hinglish
+"deployment logs were terrible",Negative,English
+"response time bahut slow tha",Negative,Hinglish
+"i am frustrated with these repeated failures",Negative,English
+"ye update pura confusing aur broken hai",Negative,Hinglish
+"customer support was not useful at all",Negative,English
+"mood kharab ho gaya after this bug",Negative,Hinglish
+"the interface feels messy and unreliable",Negative,English
+"bahut irritating issue hai ye",Negative,Hinglish
+"nothing worked when we needed it",Negative,English
+"team ko abhi bhi root cause nahi mila",Negative,Hinglish
+"the rollout was disappointing",Negative,English
+"meeting theek thi overall",Neutral,Hinglish
+"the demo was okay, nothing special",Neutral,English
+"abhi project review phase me hai",Neutral,Hinglish
+"results are average for now",Neutral,English
+"thoda improvement hua hai but still normal",Neutral,Hinglish
+"we are waiting for client feedback",Neutral,English
+"kaam ho gaya hai, ab dekhte hain next kya",Neutral,Hinglish
+"performance is stable so far",Neutral,English
+"ye version previous se alag hai bas",Neutral,Hinglish
+"the report is descriptive, not exciting",Neutral,English
+"abhi clear verdict dena jaldi hoga",Neutral,Hinglish
+"team is discussing the tradeoffs",Neutral,English
+"it was manageable, not too good not too bad",Neutral,English
+"system filhal expected behavior dikha raha hai",Neutral,Hinglish
+"there is no strong reaction from users yet",Neutral,English
