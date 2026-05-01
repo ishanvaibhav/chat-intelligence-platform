@@ -6,7 +6,7 @@ Data-science-focused WhatsApp chat analysis project with a reusable `src/` pipel
 
 AI-powered interactive dashboard for chat insights.
 
-![Dashboard](assets/screenshots/dashboard-main.png)
+![Dashboard](Screenshot%202026-05-01%20154749.png)
 
 ## Demo
 
