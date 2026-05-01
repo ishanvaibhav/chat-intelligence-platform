@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Nova Agent</string>
-    <string name="agent_running">Nova is running</string>
-    <string name="agent_stopped">Nova is stopped</string>
-    <string name="grant_dnd">Grant Do Not Disturb access so Nova can silence your phone automatically</string>
-</resources>

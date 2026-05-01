@@ -1,4 +1,0 @@
-model_name,actual,Negative,Neutral,Positive
-tabularisai/multilingual-sentiment-analysis,Negative,14,1,0
-tabularisai/multilingual-sentiment-analysis,Neutral,3,7,5
-tabularisai/multilingual-sentiment-analysis,Positive,2,3,10

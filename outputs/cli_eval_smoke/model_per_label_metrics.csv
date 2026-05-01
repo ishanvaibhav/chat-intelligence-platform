@@ -1,4 +1,0 @@
-model_name,label,precision,recall,f1,support
-rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Negative,0.6667,0.6667,0.6667,3
-rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Neutral,0.0,0.0,0.0,3
-rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment,Positive,0.4286,0.75,0.5455,4

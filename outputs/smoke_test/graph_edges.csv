@@ -1,7 +1,0 @@
-source,target,weight,reply_gap_score,mention_score,cluster_score,interactions,conversation_count,avg_gap_minutes
-Bob,Alice,13.59,8.74,2.8,2.05,8,2,1.57
-Charlie,Bob,10.35,8.36,0.0,1.99,7,2,2.0
-Alice,Charlie,3.13,2.53,0.0,0.59,2,1,2.0
-Alice,Bob,3.07,0.0,2.8,0.27,2,1,3.0
-Charlie,Alice,0.94,0.0,0.0,0.94,4,2,3.5
-Bob,Charlie,0.27,0.0,0.0,0.27,1,1,3.0

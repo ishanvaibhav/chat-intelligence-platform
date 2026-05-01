@@ -1,8 +1,0 @@
-date,user,tags,message
-2024-03-12 21:41:00,Alice,deadline,"Hey Bob, are you joining the product review tonight?"
-2024-03-12 21:45:00,Alice,deadline,"Great, the demo looked amazing today."
-2024-03-12 21:48:00,Charlie,deadline,Let's fix it tomorrow morning.
-2024-03-13 08:10:00,Dana,deadline,"Morning all, who is free for the hotfix?"
-2024-03-13 22:05:00,Alice,deadline,"New topic, anyone free for breakfast tomorrow?"
-2024-03-14 11:05:00,Alice,issue,one comment about slow filters.
-2024-03-14 11:09:00,Dana,decision,"agreed, let's capture metrics before changing code."
