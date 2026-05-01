@@ -1,6 +1,12 @@
-# WhatsApp Chat Analyser
+# Chat Intelligence Platform
 
 Data-science-focused WhatsApp chat analysis project with a reusable `src/` pipeline, transformer-based sentiment analysis, and a weighted conversation network built for exploratory analysis and portfolio presentation.
+
+## Dashboard Preview
+
+AI-powered interactive dashboard for chat insights.
+
+![Dashboard](assets/screenshots/dashboard-main.png)
 
 ## Demo
 
