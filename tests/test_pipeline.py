@@ -18,6 +18,10 @@ def test_pipeline_runs_and_exports_csv_and_parquet(tmp_path):
 
     assert results.stats["messages"] > 0
     assert results.graph.number_of_nodes() >= 2
+    assert not results.link_domains.empty
+    assert not results.media_summary.empty
+    assert not results.graph_metrics.empty
+    assert not results.behavior_profiles.empty
     assert any(path.suffix == ".csv" for path in written_paths)
     assert any(path.suffix == ".parquet" for path in written_paths)
     assert (tmp_path / "metadata.json").exists()

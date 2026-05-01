@@ -21,9 +21,11 @@ from .analysis import (
 )
 from .config import AnalysisConfig, load_config
 from .exporters import export_frames, export_metadata
+from .insights import build_insights
 from .network import ConversationNetworkResult, build_conversation_network
 from .preprocessing import load_chat_file, preprocess_chat
 from .sentiment import predict_sentiment, sentiment_by_user
+from .tracking import log_experiment
 
 
 @dataclass
@@ -41,6 +43,15 @@ class AnalysisResults:
     heatmap: pd.DataFrame
     common_words: pd.DataFrame
     emoji_counts: pd.DataFrame
+    media_summary: pd.DataFrame
+    media_by_user: pd.DataFrame
+    link_domains: pd.DataFrame
+    entities: pd.DataFrame
+    action_items: pd.DataFrame
+    behavior_profiles: pd.DataFrame
+    behavior_summary: pd.DataFrame
+    topics: pd.DataFrame
+    topic_messages: pd.DataFrame
     sentiment_messages: pd.DataFrame
     sentiment_summary: pd.DataFrame
     sentiment_timeline: pd.DataFrame
@@ -49,6 +60,10 @@ class AnalysisResults:
     graph_edges: pd.DataFrame
     graph_nodes: pd.DataFrame
     conversation_sessions: pd.DataFrame
+    graph_metrics: pd.DataFrame
+    network_roles: pd.DataFrame
+    session_summaries: pd.DataFrame
+    experiment_log_path: str | None
 
     def dataframe_exports(self) -> dict[str, pd.DataFrame]:
         return {
@@ -62,6 +77,15 @@ class AnalysisResults:
             "heatmap": self.heatmap.reset_index(),
             "common_words": self.common_words,
             "emoji_counts": self.emoji_counts,
+            "media_summary": self.media_summary,
+            "media_by_user": self.media_by_user,
+            "link_domains": self.link_domains,
+            "entities": self.entities,
+            "action_items": self.action_items,
+            "behavior_profiles": self.behavior_profiles,
+            "behavior_summary": self.behavior_summary,
+            "topics": self.topics,
+            "topic_messages": self.topic_messages,
             "sentiment_messages": self.sentiment_messages,
             "sentiment_summary": self.sentiment_summary,
             "sentiment_timeline": self.sentiment_timeline,
@@ -69,6 +93,9 @@ class AnalysisResults:
             "graph_edges": self.graph_edges,
             "graph_nodes": self.graph_nodes,
             "conversation_sessions": self.conversation_sessions,
+            "graph_metrics": self.graph_metrics,
+            "network_roles": self.network_roles,
+            "session_summaries": self.session_summaries,
         }
 
     def metadata(self) -> dict[str, Any]:
@@ -80,6 +107,8 @@ class AnalysisResults:
             "graph_enabled": self.config.graph.enabled,
             "graph_nodes": int(self.graph.number_of_nodes()),
             "graph_edges": int(self.graph.number_of_edges()),
+            "topic_modeling_enabled": self.config.topic.enabled,
+            "experiment_log_path": self.experiment_log_path,
         }
 
 
@@ -98,6 +127,7 @@ class ChatAnalysisPipeline:
 
         message_count, word_count, media_count, link_count = fetch_stats(selected_user, messages)
         busy_users_series, busy_users_df = most_busy_users(messages)
+        insight_bundle = build_insights(selected_user, messages, self.config.topic)
         sentiment_messages_df, sentiment_summary_df, sentiment_timeline_df = predict_sentiment(
             selected_user,
             messages,
@@ -117,7 +147,7 @@ class ChatAnalysisPipeline:
         else:
             busy_users_export = pd.DataFrame(columns=["message_count", "user", "percent"])
 
-        return AnalysisResults(
+        results = AnalysisResults(
             selected_user=selected_user,
             source_name=source_name,
             config=self.config,
@@ -136,6 +166,15 @@ class ChatAnalysisPipeline:
             heatmap=activity_heatmap(selected_user, messages),
             common_words=most_common_words(selected_user, messages),
             emoji_counts=emoji_counts(selected_user, messages),
+            media_summary=insight_bundle.media_summary,
+            media_by_user=insight_bundle.media_by_user,
+            link_domains=insight_bundle.link_domains,
+            entities=insight_bundle.entities,
+            action_items=insight_bundle.action_items,
+            behavior_profiles=insight_bundle.behavior_profiles,
+            behavior_summary=insight_bundle.behavior_summary,
+            topics=insight_bundle.topics,
+            topic_messages=insight_bundle.topic_messages,
             sentiment_messages=sentiment_messages_df,
             sentiment_summary=sentiment_summary_df,
             sentiment_timeline=sentiment_timeline_df,
@@ -144,7 +183,13 @@ class ChatAnalysisPipeline:
             graph_edges=graph_result.edges,
             graph_nodes=graph_result.nodes,
             conversation_sessions=graph_result.sessions,
+            graph_metrics=graph_result.metrics,
+            network_roles=graph_result.user_network_roles,
+            session_summaries=insight_bundle.session_summaries,
+            experiment_log_path=None,
         )
+        results.experiment_log_path = str(log_experiment(self.config, source_name, selected_user, results.metadata()) or "")
+        return results
 
     def run_from_file(self, chat_path: str | Path, selected_user: str = "Overall") -> AnalysisResults:
         chat_file = Path(chat_path)

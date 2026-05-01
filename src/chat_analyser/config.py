@@ -9,7 +9,7 @@ from typing import Any
 @dataclass
 class SentimentConfig:
     enabled: bool = True
-    model_name: str = "rohanrajpal/bert-base-multilingual-codemixed-cased-sentiment"
+    model_name: str = "tabularisai/multilingual-sentiment-analysis"
     batch_size: int = 16
     max_length: int = 128
     framework: str = "pt"
@@ -47,10 +47,26 @@ class ExportConfig:
 
 
 @dataclass
+class TopicConfig:
+    enabled: bool = True
+    n_topics: int = 4
+    top_terms_per_topic: int = 6
+    min_messages: int = 6
+
+
+@dataclass
+class TrackingConfig:
+    enabled: bool = True
+    log_dir: str = "outputs/experiment_tracking"
+
+
+@dataclass
 class AnalysisConfig:
     sentiment: SentimentConfig = field(default_factory=SentimentConfig)
     graph: GraphConfig = field(default_factory=GraphConfig)
     export: ExportConfig = field(default_factory=ExportConfig)
+    topic: TopicConfig = field(default_factory=TopicConfig)
+    tracking: TrackingConfig = field(default_factory=TrackingConfig)
 
 
 def _merge_into_dataclass(instance: Any, overrides: dict[str, Any]) -> Any:

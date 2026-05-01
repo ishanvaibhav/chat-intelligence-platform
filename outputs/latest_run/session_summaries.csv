@@ -1,0 +1,5 @@
+conversation_id,start_time,end_time,participants,messages,summary
+0,2024-03-12 21:41:00,2024-03-12 21:53:00,"Alice, Bob, Charlie, Dana",10,"Hey Bob, are you joining the product review tonight? | Great, the demo looked amazing today."
+1,2024-03-13 08:10:00,2024-03-13 08:29:00,"Alice, Bob, Charlie, Dana",9,"Morning all, who is free for the hotfix? | I can validate the API once ready."
+2,2024-03-13 22:05:00,2024-03-13 22:07:00,"Alice, Bob, Charlie, Dana",4,"New topic, anyone free for breakfast tomorrow? | I am in if we keep it early."
+3,2024-03-14 11:00:00,2024-03-14 11:09:00,"Alice, Bob, Charlie, Dana",8,any critical issues left? | mostly positive?

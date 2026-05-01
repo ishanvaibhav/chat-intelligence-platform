@@ -1,0 +1,13 @@
+source,target,weight,reply_gap_score,mention_score,cluster_score,interactions,conversation_count,avg_gap_minutes
+Bob,Alice,24.57,17.1,2.8,4.67,20,4,3.16
+Dana,Bob,11.54,8.74,0.0,2.8,14,4,4.21
+Charlie,Bob,11.35,8.74,0.0,2.61,11,3,3.18
+Alice,Bob,10.16,5.45,2.8,1.91,10,3,4.22
+Charlie,Alice,8.42,5.83,0.0,2.59,12,4,3.75
+Dana,Charlie,8.41,6.23,0.0,2.17,10,4,4.8
+Bob,Charlie,7.57,3.35,2.8,1.42,7,3,4.37
+Alice,Dana,6.96,5.07,0.0,1.89,8,3,4.25
+Alice,Charlie,6.07,4.77,0.0,1.3,6,2,4.67
+Dana,Alice,5.25,2.91,0.0,2.34,14,4,5.21
+Charlie,Dana,4.4,2.91,0.0,1.48,7,3,4.43
+Bob,Dana,3.97,2.53,0.0,1.44,7,3,4.86

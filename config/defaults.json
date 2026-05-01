@@ -30,5 +30,15 @@
     "include_csv": true,
     "include_parquet": true,
     "output_dir": "outputs/latest_run"
+  },
+  "topic": {
+    "enabled": true,
+    "n_topics": 4,
+    "top_terms_per_topic": 6,
+    "min_messages": 6
+  },
+  "tracking": {
+    "enabled": true,
+    "log_dir": "outputs/experiment_tracking"
   }
 }

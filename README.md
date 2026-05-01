@@ -25,6 +25,12 @@ This project started as a WhatsApp chat dashboard and was upgraded into a data-s
 - `pandas`-based feature engineering for dates, periods, and activity maps
 - deep-learning sentiment analysis using Hugging Face transformers
 - weighted `networkx` conversation graph using reply gaps, mentions, and conversation clustering
+- media analytics and link-domain analysis
+- topic discovery using TF-IDF plus KMeans clustering
+- lightweight entity and action-item extraction for deadlines, issues, and requests
+- user behavior profiling for conversation starts, reply speed, questions, and links
+- interactive graph visualization with Plotly
+- experiment logging for reproducible runs
 - Streamlit interface for quick interactive exploration
 - CLI scripts for batch pipeline runs and sentiment benchmarking
 - notebook and tests for reproducible analysis
@@ -70,6 +76,16 @@ All major artifacts can be exported as:
 - Markdown reports
 - PNG portfolio figures
 
+### 5. Extended Analytics
+
+The current pipeline also includes:
+
+- media type counts and user-wise media usage
+- shared-link domain analysis
+- topic clustering over chat messages
+- session-level extractive summaries
+- advanced network metrics such as density, reciprocity, clustering, PageRank, and betweenness
+
 ## Results
 
 ### Benchmark Summary
@@ -103,10 +119,12 @@ Selection rule:
 Pipeline sample run:
 
 - dataset: [data/sample/whatsapp_chat_sample.txt](./data/sample/whatsapp_chat_sample.txt)
-- total messages: `30`
+- total messages: `32`
 - participants: `4`
+- shared links: `1`
+- media messages: `1`
 - graph edges: `12`
-- sentiment distribution: `20.0% negative`, `43.33% neutral`, `36.67% positive`
+- sentiment distribution: `19.35% negative`, `45.16% neutral`, `35.48% positive`
 
 ## Screenshots and Saved Figures
 
@@ -164,6 +182,13 @@ python -m pip install -r requirements-dev.txt
 streamlit run app.py
 ```
 
+### Run with Docker
+
+```powershell
+docker build -t whatsapp-chat-analyser .
+docker run -p 8501:8501 whatsapp-chat-analyser
+```
+
 ### Run the Analysis Pipeline
 
 ```powershell
@@ -196,6 +221,7 @@ This repository includes:
 - configurable runtime settings in [config/defaults.json](./config/defaults.json)
 - saved benchmark outputs in [outputs/portfolio_benchmark](./outputs/portfolio_benchmark)
 - saved pipeline exports in [outputs/portfolio_pipeline](./outputs/portfolio_pipeline)
+- JSONL experiment logs in `outputs/experiment_tracking`
 - repeatable commands in [docs/reproducibility.md](./docs/reproducibility.md)
 
 ## Portfolio Highlights

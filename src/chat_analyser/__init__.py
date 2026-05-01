@@ -1,4 +1,13 @@
-from .config import AnalysisConfig, ExportConfig, GraphConfig, SentimentConfig, load_config, save_config
+from .config import (
+    AnalysisConfig,
+    ExportConfig,
+    GraphConfig,
+    SentimentConfig,
+    TopicConfig,
+    TrackingConfig,
+    load_config,
+    save_config,
+)
 from .pipeline import AnalysisResults, ChatAnalysisPipeline
 from .preprocessing import preprocess, preprocess_chat
 
@@ -9,6 +18,8 @@ __all__ = [
     "ExportConfig",
     "GraphConfig",
     "SentimentConfig",
+    "TopicConfig",
+    "TrackingConfig",
     "load_config",
     "preprocess",
     "preprocess_chat",

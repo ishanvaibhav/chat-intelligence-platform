@@ -1,0 +1,14 @@
+{
+  "selected_user": "Overall",
+  "source_name": "whatsapp_chat_sample.txt",
+  "stats": {
+    "messages": 9,
+    "words": 48,
+    "media_messages": 0,
+    "links": 0
+  },
+  "sentiment_enabled": true,
+  "graph_enabled": true,
+  "graph_nodes": 3,
+  "graph_edges": 6
+}

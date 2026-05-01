@@ -4,6 +4,7 @@
 12/03/24, 9:45 pm - Alice: Great, the demo looked amazing today.
 12/03/24, 9:46 pm - Bob: The deploy was messy though, logs were terrible.
 12/03/24, 9:47 pm - Dana: I saw the same, monitoring was noisy.
+12/03/24, 9:47 pm - Dana: Sharing the draft here https://example.com/review-notes
 12/03/24, 9:48 pm - Charlie: Let's fix it tomorrow morning.
 12/03/24, 9:51 pm - Alice: fair point, but the UX feedback was very positive.
 12/03/24, 9:53 pm - Bob: true, users liked the new flow.
@@ -15,6 +16,7 @@
 13/03/24, 8:22 am - Bob: build is green locally.
 13/03/24, 8:24 am - Alice: design tweaks are done.
 13/03/24, 8:25 am - Charlie: API looks stable on my side.
+13/03/24, 8:26 am - Bob: <Media omitted>
 13/03/24, 8:29 am - Dana: nice work team.
 13/03/24, 10:05 pm - Alice: New topic, anyone free for breakfast tomorrow?
 13/03/24, 10:06 pm - Charlie: yes, sounds good.

@@ -1,0 +1,11 @@
+date,user,entity_type,entity_value,message
+2024-03-12 21:41:00,Alice,named_entity,Hey,"Hey Bob, are you joining the product review tonight?"
+2024-03-12 21:41:00,Alice,named_entity,Bob,"Hey Bob, are you joining the product review tonight?"
+2024-03-12 21:42:00,Bob,named_entity,Alice,"@Alice haan, give me 10 mins."
+2024-03-12 21:43:00,Charlie,named_entity,Nice,"Nice, I will join too."
+2024-03-12 21:45:00,Alice,named_entity,Great,"Great, the demo looked amazing today."
+2024-03-12 21:47:00,Dana,named_entity,Sharing,Sharing the draft here https://example.com/review-notes
+2024-03-12 21:48:00,Charlie,named_entity,Let,Let's fix it tomorrow morning.
+2024-03-13 08:10:00,Dana,named_entity,Morning,"Morning all, who is free for the hotfix?"
+2024-03-13 22:05:00,Alice,named_entity,New,"New topic, anyone free for breakfast tomorrow?"
+2024-03-13 22:06:00,Bob,named_entity,Charlie,@Charlie count me in.

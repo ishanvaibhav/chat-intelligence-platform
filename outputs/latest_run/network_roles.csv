@@ -1,0 +1,5 @@
+user,weighted_in_degree,weighted_out_degree,betweenness,pagerank
+Alice,38.24,23.19,0.0,0.3075
+Bob,33.05,36.11,0.0,0.305
+Charlie,22.05,24.17,0.0,0.2105
+Dana,15.33,25.2,0.1667,0.177

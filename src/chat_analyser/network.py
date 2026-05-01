@@ -17,6 +17,8 @@ class ConversationNetworkResult:
     edges: pd.DataFrame
     nodes: pd.DataFrame
     sessions: pd.DataFrame
+    metrics: pd.DataFrame
+    user_network_roles: pd.DataFrame
 
 
 def _build_alias_map(users: list[str]) -> dict[str, set[str]]:
@@ -55,7 +57,8 @@ def build_conversation_network(
     config: GraphConfig,
 ) -> ConversationNetworkResult:
     if not config.enabled:
-        return ConversationNetworkResult(nx.DiGraph(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame())
+        empty = pd.DataFrame()
+        return ConversationNetworkResult(nx.DiGraph(), empty, empty, empty, empty, empty)
 
     filtered = df[
         (df["user"] != "group_notification")
@@ -65,7 +68,8 @@ def build_conversation_network(
     filtered = filtered.sort_values("date").reset_index(drop=True)
 
     if filtered.empty or filtered["user"].nunique() < 2:
-        return ConversationNetworkResult(nx.DiGraph(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame())
+        empty = pd.DataFrame()
+        return ConversationNetworkResult(nx.DiGraph(), empty, empty, empty, empty, empty)
 
     filtered["gap_minutes"] = filtered["date"].diff().dt.total_seconds().div(60).fillna(0)
     filtered["conversation_id"] = (filtered["gap_minutes"] > config.session_gap_minutes).cumsum()
@@ -255,6 +259,40 @@ def build_conversation_network(
         session_df["end_time"] - session_df["start_time"]
     ).dt.total_seconds().div(60).round(1)
 
+    metrics_df = pd.DataFrame()
+    roles_df = pd.DataFrame()
+    if graph.number_of_nodes() >= 1:
+        weighted_graph = graph.to_undirected()
+        density = nx.density(weighted_graph)
+        reciprocity = nx.reciprocity(graph)
+        clustering = nx.average_clustering(weighted_graph, weight="weight") if weighted_graph.number_of_edges() else 0.0
+        metrics_df = pd.DataFrame(
+            [
+                {"metric": "participants", "value": float(graph.number_of_nodes())},
+                {"metric": "edges", "value": float(graph.number_of_edges())},
+                {"metric": "density", "value": round(float(density), 4)},
+                {"metric": "reciprocity", "value": round(float(reciprocity or 0.0), 4)},
+                {"metric": "avg_clustering", "value": round(float(clustering), 4)},
+            ]
+        )
+
+        indegree = dict(graph.in_degree(weight="weight"))
+        outdegree = dict(graph.out_degree(weight="weight"))
+        betweenness = nx.betweenness_centrality(graph, weight="weight", normalized=True) if graph.number_of_edges() else {}
+        pagerank = nx.pagerank(graph, weight="weight") if graph.number_of_edges() else {node: 0.0 for node in graph.nodes}
+        roles_df = pd.DataFrame(
+            [
+                {
+                    "user": node,
+                    "weighted_in_degree": round(float(indegree.get(node, 0.0)), 3),
+                    "weighted_out_degree": round(float(outdegree.get(node, 0.0)), 3),
+                    "betweenness": round(float(betweenness.get(node, 0.0)), 4),
+                    "pagerank": round(float(pagerank.get(node, 0.0)), 4),
+                }
+                for node in graph.nodes
+            ]
+        ).sort_values(["pagerank", "betweenness"], ascending=False).reset_index(drop=True)
+
     if selected_user != "Overall":
         focus_nodes = {selected_user}
         if graph.has_node(selected_user):
@@ -270,5 +308,14 @@ def build_conversation_network(
         if not session_df.empty:
             relevant_sessions = filtered[filtered["user"].isin(focus_nodes)]["conversation_id"].unique()
             session_df = session_df[session_df["conversation_id"].isin(relevant_sessions)].reset_index(drop=True)
+        if not roles_df.empty:
+            roles_df = roles_df[roles_df["user"].isin(focus_nodes)].reset_index(drop=True)
 
-    return ConversationNetworkResult(graph=graph, edges=edge_df, nodes=node_df, sessions=session_df)
+    return ConversationNetworkResult(
+        graph=graph,
+        edges=edge_df,
+        nodes=node_df,
+        sessions=session_df,
+        metrics=metrics_df,
+        user_network_roles=roles_df,
+    )
